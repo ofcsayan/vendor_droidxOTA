@@ -253,12 +253,12 @@
         "active": true
     },
     {
-        "vendor": "",
-        "model": "",
-        "codename": "",
+        "vendor": "Nothing",
+        "model": "Phone 2",
+        "codename": "Pong",
         "maintainer": "Drishal",
         "telegram": "https://t.me/Drishal",
-        "github": "https://github.com/",
+        "github": "https://github.com/drishal",
         "donation": "",
         "active": true
     },
