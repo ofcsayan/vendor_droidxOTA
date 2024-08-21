@@ -6,12 +6,22 @@ Device maintainer: Ashwani212×Darklord
 ========================================
 
 =================
+21st August, 2024
+=================
+* Fixed issue with location indicator keep popping on statusbar.
+* Added props for better idle drain.
+* Improved battery backup and ram management.
+* Disabled blur for better experience.
+* Adjusted thermal throttling & read/write buffer size.
+* Enabled suspend to ram.
+* Enabled frame pacing.
+
+=================
 06th July, 2024
 =================
 * Fixed Double tap to wake.
 * Fixed issue with freeze in systemui.
 * some bug fixes and improvements.
-
 
 =================
 13th June, 2024
