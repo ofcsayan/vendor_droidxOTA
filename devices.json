@@ -1,6 +1,16 @@
 [
     {
         "vendor": "Xiaomi",
+        "model": "Redmi Note 12 4G NFC",
+        "codename": "topaz",
+        "maintainer": "itzParsaYC",
+        "telegram": "https://t.me/itzParsaYC",
+        "github": "https://github.com/BaranAspect-Development",
+        "donation": "",
+        "active": true
+    },
+    {
+        "vendor": "Xiaomi",
         "model": "Redmi Note 5 Pro",
         "codename": "whyred",
         "maintainer": "Arijit-Saha",
