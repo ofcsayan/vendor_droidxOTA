@@ -151,34 +151,21 @@ def get_info(ID):
         }
 
 # Prepare function for posting message in channel
-def send_post(chat_id, image, caption, button):
-    return bot.send_photo(chat_id=chat_id, photo=image, caption=caption, reply_markup=button)
+def send_post(chat_id, image, caption):
+    return bot.send_photo(chat_id=chat_id, photo=image, caption=caption)
 
 # Prepare message format for channel
 def message_content(information):
     msg = ""
-    msg += f"<b>DroidX-UI NewHorizon {information['version']} // {information['oem']} {information['device_name']} ({information['codename']})</b>\n\n"
-    msg += f"<b>Maintainer:</b> <a href='https://t.me/{information['maintainer']}'>{information['maintainer']}</a>\n"
-    msg += f"<b>Build Date:</b> <code>{information['datetime']} UTC</code>\n"
-    msg += f"<b>Build Variant:</b> <code>{information['buildtype']}</code>\n"
-    msg += f"<b>MD5: </b> <code>{information['md5']}</code>\n\n"
-    msg += f"<b>Screenshots:</b> <a href='https://t.me/droidxui_screenshots'>Here</a>\n"
-    msg += f"<b>Rom Support:</b> <a href='https://t.me/DroidXUI_announcements'>Channel</a> <b>|</b> <a href='https://t.me/DroidXUI_chats'>Group</a>\n"
-    msg += f"<b>Device Support:</b> <a href='{information['telegram']}'>Here</a>\n"
-    msg += f"<b>Donate:</b> <code>droidxuiofficial@oksbi</code>\n"
+    msg += f"<b>DXUI Eris // {information['oem']} {information['device_name']} ({information['codename']})</b>\n\n" 
+    msg += f"<u>Download ({information['buildtype']})</u>: <a href='{information['''download''']}'>Here</a>\n"
+    msg += f"<u>Screenshots</u>: <a href='https://t.me/droidxui_screenshots'>Here</a>\n\n"
+    msg += f"-> Maintainer: <a href='https://t.me/{information['maintainer']}'>{information['maintainer']}</a>\n"
+    msg += f"-> DXUI Version: <code>{information['version']}</code>\n"
+    msg += f"-> Changelog: <a href='https://raw.githubusercontent.com/DroidX-UI-Devices/vendor_droidxOTA/14/changelogs/{information['''codename''']}.txt'>Here</a>\n"
 
-    msg += f"\n#NewHorizon #{information['codename']} #Android14 #Official"
+    msg += f"\n#Eris #{information['codename']} #Android14 #Official"
     return msg
-
-# Prepare buttons for message
-def button(information):
-    buttons = InlineKeyboardMarkup()
-    buttons.row_width = 2
-    button1 = InlineKeyboardButton(text="Download", url=f"{information['download']}")
-    button2 = InlineKeyboardButton(text="Installation", url=f"https://github.com/DroidX-UI-Devices/vendor_droidxOTA/blob/14/Installation/{information['codename']}.md")
-    button3 = InlineKeyboardButton(text="Rom Changelogs", url=f"https://github.com/DroidX-UI/Release_changelogs/blob/14/DroidX-Changelogs.mk")
-    button4 = InlineKeyboardButton(text="Release Notes", url=f"https://github.com/DroidX-UI-Devices/vendor_droidxOTA/blob/14/changelogs/{information['codename']}.md")
-    return buttons.add(button1, button2, button3, button4)
 
 # Send updates to channel and commit changes in repo
 def tg_message():
@@ -193,7 +180,7 @@ def tg_message():
         for devices in get_diff(get_new_id(), get_old_id()):
             info = get_info(devices)
             with open(BANNER_PATH, "rb") as image:
-                send_post(CHAT_ID, image, message_content(info), button(info))
+                send_post(CHAT_ID, image, message_content(info))
             commit_description += f"- {info['device_name']} ({info['codename']})\n"
             sleep(5)
     update(get_new_id())
