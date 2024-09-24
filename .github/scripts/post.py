@@ -175,14 +175,14 @@ def send_post(chat_id, image, caption):
 # Prepare message format for channel
 def message_content(information):
     msg = ""
-    msg += f"<b>DXUI Eris // {information['oem']} {information['device_name']} ({information['codename']})</b>\n\n" 
+    msg += f"<b>DXUI Mars // {information['oem']} {information['device_name']} ({information['codename']})</b>\n\n" 
     msg += f"<u>Download ({information['buildtype']})</u>: <a href='{information['''download''']}'>Here</a>\n"
     msg += f"<u>Screenshots</u>: <a href='https://t.me/droidxui_screenshots'>Here</a>\n\n"
     msg += f"-> Maintainer: <a href='https://t.me/{information['maintainer']}'>{information['maintainer']}</a>\n"
     msg += f"-> DXUI Version: <code>{information['version']}</code>\n"
     msg += f"-> Changelog: <a href='https://raw.githubusercontent.com/DroidX-UI-Devices/vendor_droidxOTA/14/changelogs/{information['''codename''']}.txt'>Here</a>\n"
 
-    msg += f"\n#Eris #{information['codename']} #Android14 #Official"
+    msg += f"\n#Mars #{information['codename']} #Android14 #Official"
     return msg
 
 # Send updates to channel and commit changes in repo
