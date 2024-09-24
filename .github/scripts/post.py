@@ -21,6 +21,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, see <http://www.gnu.org/licenses/>.
 
+import re
 import telebot
 import os
 import json
@@ -28,6 +29,7 @@ import datetime
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 from time import sleep
 from NoobStuffs.libtelegraph import TelegraphHelper
+from github import Github
 
 # Get configs from workflow secrets
 def getConfig(config_name: str):
@@ -36,10 +38,26 @@ try:
     BOT_TOKEN = getConfig("BOT_TOKEN")
     CHAT_ID = getConfig("CHAT_ID")
     PRIV_CHAT_ID = getConfig("PRIV_CHAT_ID")
-    DROID_VERSION_CHECK = getConfig("DROID_VERSION_CHECK")
 except KeyError:
     print("Fill all the configs plox..\nExiting...")
     exit(0)
+
+# Get the version of DroidX UI to check for updates
+def getDroidXUIVersion():
+    VENDOR_REPO = "DroidX-UI/vendor_droidx"
+    VERSION_PATH = "config/version.mk"
+    VERSION_MAJOR_REGEX = r"PRODUCT_VERSION_MAJOR = (.+)"
+    VERSION_MINOR_REGEX = r"PRODUCT_VERSION_MINOR = (.+)"
+    g = Github(getConfig("GH_TOKEN"))
+    repo = g.get_repo(VENDOR_REPO)
+    content = repo.get_contents(VERSION_PATH).decoded_content.decode()
+    major_version = re.search(VERSION_MAJOR_REGEX, content)
+    minor_version = re.search(VERSION_MINOR_REGEX, content)
+    major = major_version.group(1) if major_version else None
+    minor = minor_version.group(1) if minor_version else None
+    return f"{major}.{minor}" if major and minor else None
+
+DROID_VERSION_CHECK = getDroidXUIVersion()
 
 BANNER_PATH = "./banners/latest.png"
 
