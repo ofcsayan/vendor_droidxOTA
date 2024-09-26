@@ -133,7 +133,7 @@ def get_info(ID):
         MAINTAINER = info['maintainer']
         DATE_TIME = datetime.datetime.fromtimestamp(int(info['timestamp']))
         DOWNLOAD_URL = info['download']
-        BUILD_TYPE = info['buildtype']
+        BUILD_TYPE = build_type
         SIZE = round(int(info['size'])/1000000000, 2)
         MD5 = info['md5']
         SHA256 = info['sha256']
