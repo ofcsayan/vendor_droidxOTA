@@ -59,7 +59,7 @@ def getDroidXUIVersion():
 
 DROID_VERSION_CHECK = getDroidXUIVersion()
 
-BANNER_PATH = "./banners/latest.png"
+BANNER_PATH = "./assets/banners/latest.png"
 
 # Init bot
 bot = telebot.TeleBot(BOT_TOKEN, parse_mode="HTML")
