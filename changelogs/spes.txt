@@ -27,3 +27,18 @@ Device maintainer: sayann70
 - Disable dynamic refreshrate 
 - limited the dex2oat resouce when thermal stress
 - And many more under the hood changes 
+
+=================
+5th October, 2024
+=================
+- Fixed media codec bug 
+- Build missing Display HAL blobs
+- Specify vendor.usb.device
+- Disable camera perflock
+- Change default dexpreopt compiler filter to speed-profile
+- Cleanup fpc fingerprint wakeup labels.
+- Address maxim ic suspend policies.
+- Remove wait_for_keymaster and all references
+- Update hal_power_default to have sys_admin capability
+- Remove conditional for WfdCommon
+- Many more Misc Improvement
